@@ -1,0 +1,73 @@
+#Створіть масив ndarray та заповніть його випадковими числами. 
+#Для створеного масива розрахуйте середнє арифметичне, середнє геометричне, моду, медіану
+import numpy as np
+from random import randint
+import random
+from math import prod
+from collections import Counter 
+#import decimal#вывод для дробного числа всех цифр после запятой
+import statistics
+
+#x = 4.4444
+#print(round(x, 1)) вывод числа x с 1 цифрой после запятой
+
+def mode(ndarray): 
+  count = Counter(ndarray) 
+  for return_value, value in count.items():
+    if value == count.most_common(1)[0][1]:
+      return return_value
+def median(ndarray):
+  leng = len(ndarray)
+  index_of_midd = leng // 2
+  if leng % 2:
+    return sorted(ndarray[index_of_midd])
+  else:
+    return sum(sorted(ndarray)[index_of_midd - 1: index_of_midd + 1]) / 2
+    
+  
+
+print("If you want to choose random enter - 1, see working example - 2")
+choise = int(input())
+if choise == 1:
+
+  print("Enter the number of digits for list")
+  num_of_dig = int(input())
+  
+  ndarray = []#список(в си массив)
+  for i in range(num_of_dig):#number of digits for list
+      int_num = randint(1,4)#Returns a random number within a given range - (1,5)
+      float_num = random.random()
+      ndarray.append(int_num)#adds  num to the end of the test_list
+      #print(float_num)
+      ndarray.append(round(float_num, 1)) # round - вывод числа с 1 цифрой после запятой
+    #print(ndarray)
+  print("Our list ", ndarray)
+  
+  #Для створеного масива розрахуйте середнє арифметичне, середнє геометричне, моду, медіану
+  # модa - значение встречается наиболее часто.
+  #print("The mean is =",statistics.mean(ndarray))
+  average = sum(ndarray) / len(ndarray)#середнє арифметичне (a+a+a..+a)/n(их количество)
+  print(round(average, 1))
+  geometric = prod(ndarray) ** (1 / len(ndarray))#середнє геометричне в степениn(их количество) √(a+a+a..+a) 
+  print(round(geometric, 1))
+  mode = mode(ndarray)#перебираем значения в массиве.если число повторяется - возвращаем
+  print(round(mode, 1)) 
+  median = statistics.median(arr)#значение, которое находится посередине при сортировке данных.
+  print("{0} is an Index of the median number".format(round(median, 1)))
+
+elif choise == 2:
+  ndarray = []
+  arr=[3, 5, 3, 4, 2, 6]
+  ndarray=np.array(arr)
+  average = sum(ndarray) / len(ndarray)#середнє арифметичне (a+a+a..+a)/n(их количество)
+  print(round(average, 1))
+  geometric = prod(ndarray) ** (1 / len(ndarray))#середнє геометричне в степениn(их количество) √(a+a+a..+a) 
+  print(round(geometric, 1))
+  #print(statistics.multimode(ndarray))
+  mode = mode(ndarray)#перебираем значения в массиве.если число повторяется - возвращаем
+  print(round(mode, 1)) 
+  median = statistics.median(ndarray)#значение, которое находится посередине при сортировке данных.
+  print("{0} is an Index of the median number".format(round(median, 1)))
+ 
+else:
+  exit(0)
