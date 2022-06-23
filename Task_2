@@ -1,25 +1,25 @@
-#Створіть структуру DataFrame та заповніть його випадковими числами
-#строковими даними (наприклад, турнірна таблиця). Виконайте
-#фільтрацію даних за довільними признаками.
-
 import pandas as pd
 
-data={'town': ['Lviv', 'Odesa', 'Mukolaiv', 'Kirillovka', 'Zaporozhye', 'Sums'],
+city={'township': ['Lviv', 'Odesa', 'Mukolaiv', 'Kirillovka', 'Zaporozhye', 'Sums'],
       'restaurant_rating': ['5', '4', '5', '3', '5', '1'],
       'hotel_rating': ['5', '3', '2', '2', '5', '1'],
       'museum_rating': ['4', '5', '3', '0', '3','3']}
       
-town = pd.DataFrame(data, columns=['town', 'restaurant_rating', 'hotel_rating', 'museum_rating'])
+town = pd.DataFrame(city, columns=['township', 'restaurant_rating', 'hotel_rating', 'museum_rating'])
 print("Frame: \n", town)
-best_marks_restor = town.loc[town['restaurant_rating'] > '3']
-worst_marks_hotel = town.loc[town['hotel_rating'] < '3']
-medium_marks_museum = town.loc[town['museum_rating'] == '3']
 
-print("\nbest_restourant_marks:\n",best_marks_restor)
+
+print("\nmedium_marks_hotel:\n",town['hotel_rating'] == '3')
+worst_marks_hotel = town.loc[town['hotel_rating'] < '3']
 print("\nworst_hotel_marks:\n",worst_marks_hotel)
+
+print("\nbest_marks_museum:\n",town['museum_rating'] > '3')
+medium_marks_museum = town.loc[town['museum_rating'] == '3']
 print("\nmedium_museum_marks:\n",medium_marks_museum)
 
-
+print("\nworst_marks_restorant:\n",town['restaurant_rating'] < '2')
+town[town < '5'] = '0'
+print("\nbest_restourant_marks:\n",town)
 
 
 
