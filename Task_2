@@ -6,7 +6,7 @@ city={'township': ['Lviv', 'Odesa', 'Mukolaiv', 'Kirillovka', 'Zaporozhye', 'Sum
       'museum_rating': ['4', '5', '3', '0', '3','3']}
       
 town = pd.DataFrame(city, columns=['township', 'restaurant_rating', 'hotel_rating', 'museum_rating'])
-print("Frame: \n", town)
+print("Frame town: \n", town)
 
 
 print("\nmedium_marks_hotel:\n",town['hotel_rating'] == '3')
