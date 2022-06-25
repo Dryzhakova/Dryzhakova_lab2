@@ -24,7 +24,9 @@ def median(ndarray):
   else:
     return sum(sorted(ndarray)[index_of_midd - 1: index_of_midd + 1]) / 2
     
-  
+def median_value(ndarray):
+  median_value = np.median(ndarray)  # медіана
+  return median_value
 
 print("If you want to choose random enter - 1, see working example - 2")
 choise = int(input())
@@ -47,13 +49,14 @@ if choise == 1:
   # модa - значение встречается наиболее часто.
   #print("The mean is =",statistics.mean(ndarray))
   average = sum(ndarray) / len(ndarray)#середнє арифметичне (a+a+a..+a)/n(их количество)
-  print(round(average, 1))
+  print("average_value " ,round(average, 1))
   geometric = prod(ndarray) ** (1 / len(ndarray))#середнє геометричне в степениn(их количество) √(a+a+a..+a) 
-  print(round(geometric, 1))
+  print("geometric_value " round(geometric, 1))
   mode = mode(ndarray)#перебираем значения в массиве.если число повторяется - возвращаем
-  print(round(mode, 1)) 
+  print("mode_value",round(mode, 1)) 
   median = statistics.median(arr)#значение, которое находится посередине при сортировке данных.
   print("{0} is an Index of the median number".format(round(median, 1)))
+  print("median_value:", median_value(ndarray))
 
 elif choise == 2:
   ndarray = []
@@ -68,6 +71,7 @@ elif choise == 2:
   print(round(mode, 1)) 
   median = statistics.median(ndarray)#значение, которое находится посередине при сортировке данных.
   print("{0} is an Index of the median number".format(round(median, 1)))
+  print("median_value:", median_value(ndarray))
  
 else:
   exit(0)
